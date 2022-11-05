@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+    <script src="inputtable.js"></script>
+</head>
+<body>
+    <input type="text" id="inQ" placeholder="문제입력" onfocus="this.placeholder=''" onblur="this.placeholder='문제입력'">
+    <input type="text" id="inA" placeholder="정답입력" onfocus="this.placeholder=''" onblur="this.placeholder='정답입력'">
+    <input type="button" value="addQ" onclick="addRow()"/>
+    <input type="button" value="delQ" onclick="delRow()"/>
+    <table id="contents" border="1">
+        <tbody id="listBody">
+            <tr>
+                <td><input type="checkbox" id="check_all" onclick="allselect(this.checked)"/></td>
+                <td>문제</td>
+                <td>정답</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
