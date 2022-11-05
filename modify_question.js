@@ -13,6 +13,8 @@ function addData(){
 
     localStorage.setItem("localData",JSON.stringify(arr));
     showData();
+    document.getElementById("inQ").value = '';
+    document.getElementById("inA").value = '';
 }
 }
 
