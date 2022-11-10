@@ -96,3 +96,8 @@ function allselect(bool){ //체크박스 전체선택
 			chks[i].checked = bool; 
 		}
 }
+function enterkey() {
+        if (window.event.keyCode == 13) {
+             addData();
+        }
+}
