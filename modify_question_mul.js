@@ -40,9 +40,7 @@ function showData(){
     getData();
     let tbl = document.getElementById("listBody");
     let x = tbl.rows.length;
-    /*while(--x){
-        tbl.deleteRow(x);
-    }*/
+   
 
     let QACount = 1;
     for (i=0;i<arr.length;i++){
