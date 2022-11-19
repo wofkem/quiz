@@ -202,19 +202,16 @@ function checkAnswer(btnid){ //정답확인 버튼 클릭 시 실행
     let answer = que_list_mul[i-1].inA //실제 객관식 정답
     let cfm_ans_mul;
 
-    for(let i = 1; i<=OBJECT_SIZE_MUL;i++){ //체크한 답 가져오기
+     //체크한 답 가져오기
         let chk_radio = document.getElementsByName('mul_e'+i);
         let cnt=0;
         for(let j=0; j<=3;j++)
         if(chk_radio[j].checked == true){ //체크된 라디오의 아이디값 가져오기
           cfm_ans_mul = chk_radio[j]
         }
-    }
-
+  
     let mul_id = cfm_ans_mul.id;
     let label = document.querySelector('label[for='+mul_id+']')
-    
-    
     
     if (label.innerHTML == answer){
       let form = q_list.childNodes[i-1] //form 노드
@@ -238,14 +235,11 @@ function checkAnswer(btnid){ //정답확인 버튼 클릭 시 실행
     }
   }
 
-  
   //주관식 답체크
-  
   for(let i = 1 + OBJECT_SIZE_MUL; i <= OBJECT_SIZE_SUB + OBJECT_SIZE_MUL; i++){
     let j = i-OBJECT_SIZE_MUL 
     let cfm_ans = q_list.childNodes[i-1].childNodes[3].childNodes[1]; //입력한 주관식 답 노드
     let answer = que_list_sub[j-1].inA //실제 주관식 정답
-    
 
     if (cfm_ans.innerHTML == answer){
       let form = q_list.childNodes[i-1] //form 노드
@@ -267,10 +261,9 @@ function checkAnswer(btnid){ //정답확인 버튼 클릭 시 실행
       form.appendChild(check);
       check.innerHTML="정답 : "+answer+" 오답입니다."
     }
-    
   }
 
-
+  //맞은 개수 알려주기
   let all = OBJECT_SIZE_MUL + OBJECT_SIZE_SUB
   let EA = document.getElementById("EA")
   EA.innerHTML = "맞은 문제 수 : "+EA_cnt+"　　총 문제 수 : "+all
