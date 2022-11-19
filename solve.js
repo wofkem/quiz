@@ -27,6 +27,10 @@ shuffle(que_list_sub) //주관식 문제 순서 셔플
 
 
 window.onload = function(){
+
+  if (OBJECT_SIZE_MUL+OBJECT_SIZE_SUB == 0){
+    alert("입력된 문제가 없습니다. \n문제를 입력해주세요.")
+  }
 //객관식
 for(let i=1;i<=OBJECT_SIZE_MUL;i++){
   let container = document.getElementById("q_list") 
@@ -153,7 +157,8 @@ function confirm(tagid){//확인 버튼 누르면 입력한 정답 추가
   ans.innerHTML = ans.innerHTML+"<a>"+textbox.value+"</a>";
 }
 
-function checkAnswer(){
+function checkAnswer(btnid){ //정답확인 버튼 클릭 시 실행
+  let btn_cnt = 0;
   for(let i = 1; i<=OBJECT_SIZE_MUL;i++){ //객관식 답 선택했는지 확인
     if (OBJECT_SIZE_MUL!=0){
       let chk_radio = document.getElementsByName('mul_e'+i);
@@ -164,7 +169,7 @@ function checkAnswer(){
       }
       if (cnt==4){
         alert("답을 입력해주세요.")
-        break;
+        return;
       }
     }
   }
@@ -175,8 +180,103 @@ function checkAnswer(){
       let cfm_ans = sub_div.childNodes[1]
       if (cfm_ans.innerHTML==""){
         alert("답을 입력해주세요.")
-        break;
+        return;
       }
     }
   }
+
+  //정답 확인
+  let inputid = btnid.id;
+  let input = document.getElementById(inputid);
+  let body = input.parentNode;
+
+  let q_list = body.childNodes[3];
+  if (q_list.innerHTML == ""){ //입력된 문제가 없을 때
+    alert("입력된 문제가 없습니다. \n문제를 입력해주세요.")
+    return}
+  
+  let EA_cnt = 0;
+
+  //객관식 답체크
+  for(let i = 1; i<=OBJECT_SIZE_MUL; i++){ 
+    let answer = que_list_mul[i-1].inA //실제 객관식 정답
+    let cfm_ans_mul;
+
+    for(let i = 1; i<=OBJECT_SIZE_MUL;i++){ //체크한 답 가져오기
+        let chk_radio = document.getElementsByName('mul_e'+i);
+        let cnt=0;
+        for(let j=0; j<=3;j++)
+        if(chk_radio[j].checked == true){ //체크된 라디오의 아이디값 가져오기
+          cfm_ans_mul = chk_radio[j]
+        }
+    }
+
+    let mul_id = cfm_ans_mul.id;
+    let label = document.querySelector('label[for='+mul_id+']')
+    
+    
+    
+    if (label.innerHTML == answer){
+      let form = q_list.childNodes[i-1] //form 노드
+      let check = document.createElement('div'); //정답 알려주는 노드 추가
+      check.setAttribute("style","font-weight:bold");
+      check.setAttribute("id","check_ans_mul"+i);
+      check.setAttribute("class","check_mul");
+      form.appendChild(check);
+      check.innerHTML="정답 : "+answer+" 정답입니다."
+
+      EA_cnt++
+    }
+    else{
+      let form = q_list.childNodes[i-1] //form 노드
+      let check = document.createElement('div'); //정답 알려주는 노드 추가
+      check.setAttribute("style","font-weight:bold");
+      check.setAttribute("id","check_ans_mul"+i);
+      check.setAttribute("class","check_mul");
+      form.appendChild(check);
+      check.innerHTML="정답 : "+answer+" 오답입니다."
+    }
+  }
+
+  
+  //주관식 답체크
+  
+  for(let i = 1 + OBJECT_SIZE_MUL; i <= OBJECT_SIZE_SUB + OBJECT_SIZE_MUL; i++){
+    let j = i-OBJECT_SIZE_MUL 
+    let cfm_ans = q_list.childNodes[i-1].childNodes[3].childNodes[1]; //입력한 주관식 답 노드
+    let answer = que_list_sub[j-1].inA //실제 주관식 정답
+    
+
+    if (cfm_ans.innerHTML == answer){
+      let form = q_list.childNodes[i-1] //form 노드
+      let check = document.createElement('div'); //정답 알려주는 노드 추가
+      check.setAttribute("style","font-weight:bold");
+      check.setAttribute("id","check_ans"+j);
+      check.setAttribute("class","check");
+      form.appendChild(check);
+      check.innerHTML="정답 : "+answer+" 정답입니다."
+      
+      EA_cnt++;
+    }
+    else{
+      let form = q_list.childNodes[i-1] //form 노드
+      let check = document.createElement('div'); //정답 알려주는 노드 추가
+      check.setAttribute("style","font-weight:bold");
+      check.setAttribute("id","check_ans"+j);
+      check.setAttribute("class","check");
+      form.appendChild(check);
+      check.innerHTML="정답 : "+answer+" 오답입니다."
+    }
+    
+  }
+
+
+  let all = OBJECT_SIZE_MUL + OBJECT_SIZE_SUB
+  let EA = document.getElementById("EA")
+  EA.innerHTML = "맞은 문제 수 : "+EA_cnt+"　　총 문제 수 : "+all
+
+  btn_cnt++
+  let btn = document.getElementById("cfm_btn")
+  if (btn_cnt == 1){
+    btn.setAttribute("onclick","")}
 }
