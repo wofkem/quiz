@@ -271,5 +271,6 @@ function checkAnswer(btnid){ //정답확인 버튼 클릭 시 실행
   btn_cnt++
   let btn = document.getElementById("cfm_btn")
   if (btn_cnt == 1){
-    btn.setAttribute("onclick","")}
+    btn.setAttribute("onclick","")
+    btn.style.display = "none";}
 }
