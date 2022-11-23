@@ -1,0 +1,25 @@
+
+#inputQ{
+    width: 200px;
+    height: 70px;
+    margin-bottom: 30px;
+    background-color: rgb(235, 235, 235);
+    border: 0px;
+    border-radius: 20px;
+    display: block;
+    font-size: 15px;
+}
+#solveQ{
+    width: 200px;
+    height: 70px;
+    background-color: rgb(235, 235, 235);
+    border: 0px;
+    border-radius: 20px;
+    display: block;
+    font-size: 15px;
+}
+.popup_box{
+    width: 300px;
+    height: 200px;
+    background-color: rgb(228, 228, 228);
+}
