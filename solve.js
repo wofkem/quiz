@@ -39,8 +39,8 @@ for(let i=1;i<=OBJECT_SIZE_MUL;i++){
   newForm.setAttribute("class","mul")
   newForm.setAttribute("id","mul"+i)
   newForm.setAttribute("onsubmit","return false;")
-  
   newQ = document.createElement("div");
+  newQ.setAttribute("style","font-weight:bold");
   newQ.setAttribute("class","mul")
   newQ.setAttribute("id","mul"+i)
   newQ.innerHTML = "문제 : "+JSON.parse(JSON.stringify(que_list_mul[i-1].inQ))
@@ -67,28 +67,28 @@ for(let i=1;i<=OBJECT_SIZE_MUL;i++){
   E1.setAttribute("class", "mul_a");
   E1.setAttribute("id", "mul_a1_"+i);
   E1_L.setAttribute("for", "mul_a1_"+i);
-  E1_L.innerHTML = mul_list[0]
+  E1_L.innerHTML = mul_list[0]+"　"
 
   E2.setAttribute("type", "radio");
   E2.setAttribute("name", "mul_e"+i);
   E2.setAttribute("class", "mul_a");
   E2.setAttribute("id", "mul_a2_"+i);
   E2_L.setAttribute("for", "mul_a2_"+i);
-  E2_L.innerHTML = mul_list[1]
+  E2_L.innerHTML = mul_list[1]+"　"
 
   E3.setAttribute("type", "radio");
   E3.setAttribute("name", "mul_e"+i);
   E3.setAttribute("class", "mul_a");
   E3.setAttribute("id", "mul_a3_"+i);
   E3_L.setAttribute("for", "mul_a3_"+i);
-  E3_L.innerHTML = mul_list[2]
+  E3_L.innerHTML = mul_list[2]+"　"
 
   E4.setAttribute("type", "radio");
   E4.setAttribute("name", "mul_e"+i);
   E4.setAttribute("class", "mul_a");
   E4.setAttribute("id", "mul_a4_"+i);
   E4_L.setAttribute("for", "mul_a4_"+i);
-  E4_L.innerHTML = mul_list[3]
+  E4_L.innerHTML = mul_list[3]+"　"
 
   newForm.appendChild(E1);
   newForm.appendChild(E1_L);
@@ -114,6 +114,7 @@ for(let i=1;i<=OBJECT_SIZE_SUB;i++){
   newQ = document.createElement("div");
   newQ.setAttribute("class","sub")
   newQ.setAttribute("id","sub_q"+i)
+  newQ.setAttribute("style","font-weight:bold");
   newQ.innerHTML = "문제 : "+JSON.parse(JSON.stringify(que_list_sub[i-1].inQ))
   newForm.appendChild(newQ);
   
@@ -131,6 +132,7 @@ for(let i=1;i<=OBJECT_SIZE_SUB;i++){
   input2.setAttribute("type", "button");
   input2.setAttribute("name", "sub_btn"+i);
   input2.setAttribute("id", "sub_btn"+i);
+  input2.setAttribute("style","cursor:pointer")
   input2.setAttribute("value", "확인");
   input2.setAttribute("class", "sub_btn");
   input2.setAttribute("onclick", "confirm(this)");
@@ -158,6 +160,8 @@ function confirm(tagid){//확인 버튼 누르면 입력한 정답 추가
 }
 
 function checkAnswer(btnid){ //정답확인 버튼 클릭 시 실행
+  window.scrollTo(0, 0);
+  document.getElementById("EA").style.display = "block";
   let btn_cnt = 0;
   for(let i = 1; i<=OBJECT_SIZE_MUL;i++){ //객관식 답 선택했는지 확인
     if (OBJECT_SIZE_MUL!=0){
@@ -199,7 +203,7 @@ function checkAnswer(btnid){ //정답확인 버튼 클릭 시 실행
 
   //객관식 답체크
   for(let i = 1; i<=OBJECT_SIZE_MUL; i++){ 
-    let answer = que_list_mul[i-1].inA //실제 객관식 정답
+    let answer = que_list_mul[i-1].inA+"　" //실제 객관식 정답
     let cfm_ans_mul;
 
      //체크한 답 가져오기
@@ -220,7 +224,7 @@ function checkAnswer(btnid){ //정답확인 버튼 클릭 시 실행
       check.setAttribute("id","check_ans_mul"+i);
       check.setAttribute("class","check_mul");
       form.appendChild(check);
-      check.innerHTML="정답 : "+answer+" 정답입니다."
+      check.innerHTML="정답 : "+answer+"<a style='color:blue;'>정답입니다.<a/>"
 
       EA_cnt++
     }
@@ -231,7 +235,7 @@ function checkAnswer(btnid){ //정답확인 버튼 클릭 시 실행
       check.setAttribute("id","check_ans_mul"+i);
       check.setAttribute("class","check_mul");
       form.appendChild(check);
-      check.innerHTML="정답 : "+answer+" 오답입니다."
+      check.innerHTML="정답 : "+answer+"<a style='color:red;'>오답입니다.<a/>"
     }
   }
 
@@ -248,7 +252,7 @@ function checkAnswer(btnid){ //정답확인 버튼 클릭 시 실행
       check.setAttribute("id","check_ans"+j);
       check.setAttribute("class","check");
       form.appendChild(check);
-      check.innerHTML="정답 : "+answer+" 정답입니다."
+      check.innerHTML="정답 : "+answer+"<a style='color:blue;'> 정답입니다.<a/>"
       
       EA_cnt++;
     }
@@ -259,7 +263,7 @@ function checkAnswer(btnid){ //정답확인 버튼 클릭 시 실행
       check.setAttribute("id","check_ans"+j);
       check.setAttribute("class","check");
       form.appendChild(check);
-      check.innerHTML="정답 : "+answer+" 오답입니다."
+      check.innerHTML="정답 : "+answer+"<a style='color:red;'> 오답입니다.<a/>"
     }
   }
 
