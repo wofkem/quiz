@@ -9,23 +9,19 @@
     <script src="select.js"></script>
 </head>
 <body>
-    <input type="button" value="문제입력 및 수정" onclick="openPop()" id="inputQ"/>
-    <input type="button" value="문제풀기" onclick="location.href='solve.html'" id="solveQ"/>
+    <input type="button" value="문제입력 및 수정" onclick="openPop()" id="inputQ" style='cursor:pointer;'/>
+    <input type="button" value="문제풀기" onclick="location.href='solve.html'" id="solveQ" style='cursor:pointer;'/>
     <div class="popup_layer" id="popup_layer" style="display: none;">
         <div class="popup_box">
-            <div>
-              <a href="javascript:closePop();">닫기</a>
-            </div>
             <!--팝업 컨텐츠 영역-->
             <div class="popup_cont">
-                <문제입력 및 수정>
-                <div><a href="modify_question_mul.html">객관식</a></div>
-                <div><a href="modify_question.html">주관식</a></div>
-      
+                <div id="select">문제유형 선택</div>
+                <div id="sub_btn" class="sel_btn" onclick="location.href='modify_question_mul.html'" style='cursor:pointer;'>객관식</div>
+                <div id="mul_btn" class="sel_btn" onclick="location.href='modify_question.html'" style='cursor:pointer;'>주관식</div>                
             </div>
             <!--팝업 버튼 영역-->
-            <div class="popup_btn">
-                <a href="javascript:closePop();">닫기</a>
+            <div class="popup_btn" id="close_btn" onclick="closePop()" style='cursor:pointer;'>
+                <a>닫기</a>
             </div>
         </div>
       </div>
