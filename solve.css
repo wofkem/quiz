@@ -1,0 +1,81 @@
+body{
+    position: absolute;
+    left: 50%;
+    margin-left: -170px;
+    width: 340px;
+    margin-top: 10px;
+}
+#gohome{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border: 0px;
+    border-radius: 10px;
+    background-color: rgb(64, 116, 175);
+    color: white;
+}
+.mul{
+    background-color: rgb(240, 240, 240);
+    margin-top: 10px;
+    padding-bottom: 5px;
+}
+.mul>div{
+    width: 330px;
+    height: 30px;
+    padding: 5px;
+    line-height: 30px;
+}
+.sub{
+    background-color: rgb(240, 240, 240);
+    margin-top: 10px;
+    padding-bottom: 5px;
+}
+.sub>div{
+    width: 330px;
+    height: 30px;
+    padding: 5px;
+    line-height: 30px;
+}
+.sub input{
+    margin-left: 5px;
+}
+.sub_a{
+    width: 180px;
+    height: 15px;
+    padding: 5px;
+}
+.sub_btn{
+    width: 40px;
+    height: 29px;
+    padding: 5px;
+    position: absolute;
+    border: 0;
+    border-radius: 6px;
+    background-color: rgb(219, 219, 219);
+}
+#cfm_btn{
+    width: 80px;
+    height: 30px;
+    margin-top: 10px;
+    border: 0px;
+    border-radius: 10px;
+    background-color: rgb(64, 116, 175);
+    color: white;
+    margin-bottom: 10px;
+}
+#reload{
+    width: 80px;
+    height: 30px;
+    margin-top: 10px;
+    border: 0px;
+    border-radius: 10px;
+    background-color: rgb(64, 116, 175);
+    color: white;
+    margin-bottom: 10px;
+}
+#EA{
+    width: 340px;
+    height: 25px;
+    padding: 5px;
+    margin-top: 10px;
+}
